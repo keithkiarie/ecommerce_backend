@@ -173,7 +173,7 @@ router.put("/update", verifyToken, async (req, res) => {
       });
     }
   
-    await User.update(
+    User.update(
       changeItems,
       {
         where: {
