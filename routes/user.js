@@ -49,14 +49,24 @@ router.post("/register", async (req, res) => {
     firstName,
     lastName,
     email,
-    role,
     password,
+    active: true
   })
     .then((user) => {
+      const token = jwt.sign(
+        { userId: foundUser.id, email: foundUser.email },
+        process.env.TOKEN_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
+
       res.json({
         success: true,
         id: user.id,
         message: "User created.",
+        token,
+        tokenExpiration: 7200, // in seconds
       });
     })
     .catch((err) => {
@@ -123,7 +133,7 @@ router.post("/login", async (req, res) => {
   // successful log in
   res.json({
     success: true,
-    token: token,
+    token,
     tokenExpiration: 7200, // in seconds
     email: foundUser.email,
   });
