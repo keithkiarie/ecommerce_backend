@@ -16,6 +16,9 @@ const User = db.define("product", {
   description: {
     type: Sequelize.STRING,
   },
+  categoryId: {
+    type: Sequelize.INTEGER,
+  },
   available: {
     type: Sequelize.BOOLEAN,
   },
