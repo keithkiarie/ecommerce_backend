@@ -15,6 +15,9 @@ const User = db.define("cart", {
   },
   orderedAt: {
     type: Sequelize.DATE
+  },
+  totalPrice: {
+    type: Sequelize.DOUBLE,
   }
 });
 

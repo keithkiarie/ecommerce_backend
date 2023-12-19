@@ -13,12 +13,12 @@ const User = db.define("cart_item", {
   productId: {
     type: Sequelize.INTEGER,
   },
-  // to store price when the product was put in the cart
-  priceForEach: {
-    type: Sequelize.DOUBLE,
-  },
   quantity: {
     type: Sequelize.INTEGER,
+  },
+  // to remember the price when the product was put in the cart
+  totalPrice: {
+    type: Sequelize.DOUBLE,
   },
 });
 
