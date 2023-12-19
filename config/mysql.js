@@ -1,7 +1,16 @@
 const Sequelize = require("sequelize");
+const dotenv = require("dotenv");
+const path = require("path");
+const fs = require("fs");
 
-module.exports = new Sequelize("ecommerce", "root", "", {
-    host: "localhost",
+
+dotenv.config();
+
+const filePath = path.join(__dirname, "..", "dbConnection.json");
+dbConfigs = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+module.exports = new Sequelize(dbConfigs.dbName, dbConfigs.username, dbConfigs.password, {
+    host: dbConfigs.host,
     dialect: "mysql",
     operatorAliases: false,
 
