@@ -21,7 +21,7 @@ router.get("/byProductId", async (req, res) => {
     let { id } = req.query;
     
   const product = await Product.findOne({ where: { id } });
-  if (!existingRecord) {
+  if (!product) {
     return res.status(400).json({
       success: false,
       message: "Product not found",
